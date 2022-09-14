@@ -32,7 +32,7 @@
         name: '{{ item }}'
         owner: '{{ aeroo_docs_daemon_user }}'
         group: '{{ aeroo_docs_daemon_group }}'
-        mode: 0755
+        mode: '755'
         state: directory
       loop:
         - '{{ aeroo_docs_app_directory }}'
@@ -52,13 +52,13 @@
       template:
         src: aeroo-docs.conf.j2
         dest: /etc/aeroo-docs.conf
-        mode: 0644
+        mode: '644'
 
     - name: Configure Aeroo Docs service
       template:
         src: supervisor.conf.j2
         dest: /etc/supervisor/conf.d/aeroo-docs.conf
-        mode: 0644
+        mode: '644'
       notify: restart aeroo-docs
 
     - name: Install Aeroo Docs service
